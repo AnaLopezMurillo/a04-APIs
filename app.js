@@ -5,7 +5,7 @@ const meteoParams = {
     daily: ["temperature_2m_max", "temperature_2m_min",  "precipitation_probability_mean", "weather_code"],
     current: ["temperature_2m",  "precipitation_probability", "weather_code"],
     timezone: "EST",
-    forecast_days: 3
+    forecast_days: 4
 };
 
 const timerSearchParams = {
@@ -23,13 +23,16 @@ const timerSearch = new URLSearchParams(timerSearchParams);
 const timerURL = `http://www.7timer.info/bin/api.pl?${timerSearch}`;
 
 // Initialize data arrays 
-days = []                   // string array
-tempMax = []                // Maximum temperature in fahrenheight
-tempMin = []                // Minimum temperature in fahrenheight
-tempCurr = 0                // Current temperature in fahrenheight
-precipPerc = []             // Precipitation percentage 
-weather_type = []           // 
-weather_code = []           // in WMO
+let days = [];                   // string array
+let tempMax = [];                // Maximum temperature in fahrenheight
+let tempMin = [];               // Minimum temperature in fahrenheight
+let tempCurr = 0;                // Current temperature in fahrenheight
+let precipPerc = [];             // Precipitation percentage 
+let weather_code = [];           // in WMO
+let humidityCurr = "";           // Relative humidity %
+let wind_speed = 0;
+let wind_direction = "";
+
 
 // constants
 const dayNames = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -63,24 +66,25 @@ const weatherCodes = {
     95: "Thunderstorm"
 }
 
+const displayWeather = async () => {
+    let data = undefined;
+    try {
+        const response = await fetch(timerURL);
+        if (!response.ok) throw new Error('Weather data could not be fetched.');
+        data = await response.json();
+    } catch (error) {
+        console.error('Error fetching 7Timer! data:', error);
+    }
 
-// const displayWeather = async () => {
-//     try {
-//         const response = await fetch(timerURL);
-//         if (!response.ok) {
-//             throw new Error('Weather data could not be fetched.');
-//         }
-//         const data = await response.json();
-//         console.log(data.dataseries[0]);
-//         // document.getElementById('weather').innerHTML = `
-//         //     <p>Temperature: ${data.dataseries[0].temp2m}°C</p> 
-//         // `;
-//     } catch (error) {
-//         console.error('Error:', error);
-//     }
-// };
+    if (data != undefined) {
+        const currentData = data.dataseries[0];
+        const windData = currentData.wind10m;
 
-// displayWeather();
+        humidityCurr = currentData.rh2m;
+        wind_speed = windData.speed;
+        wind_direction = windData.direction;
+    }
+};
 
 // Function to fetch weather data (openmeteo)
 async function meteoWeather() {
@@ -91,7 +95,7 @@ async function meteoWeather() {
         data = await response.json();
 
     } catch (error) {
-        console.error('Error fetching weather data:', error);
+        console.error('Error fetching OpenMeteo data:', error);
     }
 
     if (data != undefined) {
@@ -111,21 +115,60 @@ async function meteoWeather() {
 
         for (let i = 0; i < timeStamps.length; i++) {
             let date = new Date(timeStamps[i]);
-            days.push(dayNames[date.getDate()]);
+            // console.log(timeStamps[i]);
+            // console.log(dayNames[date.getDay()]);
+            days.push(dayNames[date.getDay()]);
             tempMax.push()
         }
+
+        console.log(days);
     }
 }
 
 function toFahrenheight(temp) {
-    // convert celsius to fahrenheight temperature
     result = (temp * 9/5) + 32
-    return result.toFixed(2);
+    return result.toFixed();
 }
-
-// meteoWeather();
-
 
 // grab div main by id and populate inside with next 4 days of weather with info from this
 
-// document.getElementById('main').innerHTML = ``
+function populateData() {
+
+        // Current data
+    document.getElementById('current').innerHTML = 
+    `   
+        <weather-card>
+            <h1> 
+                ${days[0]}
+            <h1>
+        </weather-card>
+    `
+
+
+    // Upcoming data
+    for (let i = 1; i < days.length; i++) {
+        let weather_div = document.createElement("weather-card");
+        weather_div.innerHTML = 
+        `
+            <h1> 
+                ${days[i]}
+            </h1>
+        `
+
+        document.getElementById("upcoming").appendChild(weather_div);
+        
+    }
+    // document.getElementById('main').innerHTML = ``
+    // document.getElementById('weather').innerHTML = `
+    //     <p>Temperature: ${data.dataseries[0].temp2m}°C</p> 
+    // `;
+        
+}
+
+async function render() {
+    await meteoWeather();
+    await displayWeather();
+    populateData();
+}
+
+render();
