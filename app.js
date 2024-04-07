@@ -38,31 +38,31 @@ let wind_direction = "";
 const dayNames = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
 const weatherCodes = {
-    0: "Clear Sky",
+    0: "Clear Skies",
     1: "Mainly Clear",
     2: "Partly Cloudy",
     3: "Overcast",
     45: "Fog",
     48: "Depositing Rime Fog",
-    51: "Drizzle: Light",
-    53: "Drizzle: Moderate",
-    55: "Drizzle: Dense",
-    56: "Freezing Drizzle: Light",
-    57: "Freezing Drizzle: Moderate",
-    61: "Rain: Slight",
-    63: "Rain: Moderate",
-    65: "Rain: Heavy",
-    66: "Freezing Rain: Light",
-    67: "Freezing Rain: Heavy",
-    71: "Snow: Slight",
-    73: "Snow: Moderate",
-    75: "Snow: Heavy",
+    51: "Light Drizzle",
+    53: "Moderate Drizzle",
+    55: "Dense Drizzle",
+    56: "Light Freez. Drizzle",
+    57: "Moderate Freez. Drizzle",
+    61: "Slight Rain",
+    63: "Moderate Rain",
+    65: "Heavy Rain",
+    66: "Light Freez. Rain",
+    67: "Heavy Freez. Rain",
+    71: "Slight Snow",
+    73: "Moderate Snow",
+    75: "Heavy Snow",
     77: "Snow grains",
-    80: "Rain Showers: Slight",
-    81: "Rain Showers: Moderate",
-    82: "Rain Showers: Violent",
-    85: "Snow Showers: Slight",
-    86: "Snow Showers: Heavy",
+    80: "Slight Rain Show.",
+    81: "Moderate Rain Show.",
+    82: "Violent Rain Show.",
+    85: "Slight Snow Show.",
+    86: "Heavy Snow Show.",
     95: "Thunderstorm"
 }
 
@@ -104,8 +104,13 @@ async function meteoWeather() {
         const dailyData = data.daily;
         const timeStamps = dailyData.time;
         precipPerc = dailyData.precipitation_probability_mean;
-        tempMax = dailyData.temperature_2m_max;
-        tempMin = dailyData.temperature_2m_min;
+        tempMax = dailyData.temperature_2m_max.map(
+            (x) => toFahrenheight(x)
+        );
+        tempMin = dailyData.temperature_2m_min.map(
+            (x) => toFahrenheight(x)
+        );
+
         weather_code = dailyData.weather_code;
 
         const currentData = data.current
@@ -134,13 +139,20 @@ function toFahrenheight(temp) {
 
 function populateData() {
 
-        // Current data
+    // Current data
     document.getElementById('current').innerHTML = 
     `   
         <weather-card>
             <h1> 
                 ${days[0]}
-            <h1>
+            </h1>
+
+            <img src="./icons/placeholder.png">
+
+            <h2>
+                ${weatherCodes[weather_code[0]]}
+            </h2>
+            
         </weather-card>
     `
 
@@ -153,6 +165,19 @@ function populateData() {
             <h1> 
                 ${days[i]}
             </h1>
+            <img src="./icons/placeholder.png">
+            <h2>
+                ${weatherCodes[weather_code[i]]}
+            </h2>
+            <div class='temp'>
+                <h2 class='low'> Lo </h2>
+                <h1> ${tempMin[i]} </h1>
+            </div>
+            <div class='temp'>
+                <h2 class='high'> Hi </h2>
+                <h1> ${tempMax[i]} </h1>
+            </div>
+
         `
 
         document.getElementById("upcoming").appendChild(weather_div);
