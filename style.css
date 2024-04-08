@@ -4,6 +4,28 @@ body {
     z-index:0;
 }
 
+#footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position:fixed;
+    z-index:0;
+    height:40px;
+    border-color: beige;
+    border-width: 10px;
+    background-color: #2D3868;
+    padding: 12px;
+    text-align: center;
+}
+
+#clock {
+    color:#c9c9f8;
+    font-family: Georia, sans-serif;
+    letter-spacing: 5px;
+    font-size:40px;
+    font-kerning: 5px;
+}
+
 weather-card {
     width: 310px;
     height: 720px;
@@ -42,10 +64,9 @@ weather-card h2 {
     -webkit-text-stroke-color: #2A2A6E;
 }
 
-
 img {
     width: 80%;
-    margin-bottom:1rem;
+    /* margin-bottom:1rem; */
     padding-left:2rem;
 }
 
@@ -58,15 +79,18 @@ img {
 .temp h2 {
     font-size:60px;
     margin:0;
+    text-shadow: 2px 2px 5px #060303;
 }
 
 .temp h1 {
     color:#c9c9f8;
-    font-size:80px;
+    font-weight: lighter;
+    font-size:95px;
     margin:0;
     padding-right: 30px;
     padding-left: 30px;
     text-align: center;
+    text-shadow: 1px 1px 15px #060303;
 }
 
 .low {
