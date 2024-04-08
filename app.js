@@ -9,8 +9,8 @@ const meteoParams = {
 };
 
 const timerSearchParams = {
-    lon: -79.0558,
     lat: 35.9132,
+    lon: -79.0558,
     product: "civil",
     output: "json"
 };
@@ -158,7 +158,7 @@ function clock() {
             (seconds < 10 ? "0" + seconds : seconds) + " " + ampm;
 
         document.getElementById('clock').innerText = formattedTime;
-        document.getElementById('date').innerHTML = dayNames[now.getDay()] + " " + monthNames[now.getMonth()] + " " + now.getDate();
+        document.getElementById('date').innerHTML = dayNames[estTime.getDay()] + " " + monthNames[now.getMonth()] + " " + now.getDate();
     }
     setInterval(updateClock, 1000);
 }
@@ -174,7 +174,7 @@ function populateData() {
             <h1> 
                 ${days[0]}
             </h1>
-            <img src="./icons/placeholder.png">
+            <img src="./icons/${weather_code[0]}.png">
             <h2>
                 ${weatherCodes[weather_code[0]]}
             </h2>
@@ -193,7 +193,7 @@ function populateData() {
             <h1> 
                 ${days[i]}
             </h1>
-            <img src="./icons/placeholder.png">
+            <img src="./icons/${weather_code[i]}.png">
             <h2>
                 ${weatherCodes[weather_code[i]]}
             </h2>

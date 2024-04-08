@@ -26,14 +26,22 @@ body {
     letter-spacing: 5px;
     font-size:40px;
     font-kerning: 5px;
+    margin-top:1rem;
+    margin-right:2rem;
+    margin-bottom:2rem;
 }
 
 #clock {
     color:#c9c9f8;
+    text-align: right;
     font-family: Georia, sans-serif;
     letter-spacing: 5px;
     font-size:40px;
     font-kerning: 5px;
+}
+
+#date {
+    text-align: right;
 }
 
 #weather {
@@ -42,7 +50,7 @@ body {
 
 weather-card {
     width: 310px;
-    height: 720px;
+    height: 700px;
     float: left;
     margin-top:0.5rem;
     margin-right:3rem;
@@ -58,15 +66,15 @@ weather-card {
 weather-card h1 {
     font-size: 80px;
     padding-left: 4.5rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #d1dc91;
     text-shadow: 3px 3px 0px #060303;
 }
 
 weather-card h2 {
-    font-size:60px;
+    font-size:57px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #E1E2FF;
     margin-top:0;
