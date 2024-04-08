@@ -37,6 +37,8 @@ let wind_direction = "";
 // constants
 const dayNames = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
+const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
 const weatherCodes = {
     0: "Clear Skies",
     1: "Mainly Clear",
@@ -155,7 +157,8 @@ function clock() {
             (minutes < 10 ? "0" + minutes : minutes) + ":" + 
             (seconds < 10 ? "0" + seconds : seconds) + " " + ampm;
 
-            document.getElementById("clock").innerText = formattedTime;
+        document.getElementById('clock').innerText = formattedTime;
+        document.getElementById('date').innerHTML = dayNames[now.getDay()] + " " + monthNames[now.getMonth()] + " " + now.getDate();
     }
     setInterval(updateClock, 1000);
 }
@@ -171,12 +174,13 @@ function populateData() {
             <h1> 
                 ${days[0]}
             </h1>
-
             <img src="./icons/placeholder.png">
-
             <h2>
                 ${weatherCodes[weather_code[0]]}
             </h2>
+            <div class='temp'>
+                <h1>${tempCurr}</h1>
+            </div>
             
         </weather-card>
     `

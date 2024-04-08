@@ -18,6 +18,16 @@ body {
     text-align: center;
 }
 
+#header {
+    float:right;
+    width:100%;
+    color:#c9c9f8;
+    font-family: Georia, sans-serif;
+    letter-spacing: 5px;
+    font-size:40px;
+    font-kerning: 5px;
+}
+
 #clock {
     color:#c9c9f8;
     font-family: Georia, sans-serif;
@@ -26,11 +36,15 @@ body {
     font-kerning: 5px;
 }
 
+#weather {
+    margin-left: 3rem;
+}
+
 weather-card {
     width: 310px;
     height: 720px;
     float: left;
-    margin-top:5rem;
+    margin-top:0.5rem;
     margin-right:3rem;
     z-index:1;
     background-attachment: fixed;
@@ -91,6 +105,10 @@ img {
     padding-left: 30px;
     text-align: center;
     text-shadow: 1px 1px 15px #060303;
+}
+
+#current .temp {
+    width: 100%;
 }
 
 .low {
