@@ -68,6 +68,7 @@ const weatherCodes = {
     95: "Thunderstorm"
 }
 
+// Functions to fetch weather data
 const displayWeather = async () => {
     let data = undefined;
     try {
@@ -88,7 +89,6 @@ const displayWeather = async () => {
     }
 };
 
-// Function to fetch weather data (openmeteo)
 async function meteoWeather() {
     let data = undefined;
     try {
@@ -158,7 +158,7 @@ function clock() {
             (seconds < 10 ? "0" + seconds : seconds) + " " + ampm;
 
         document.getElementById('clock').innerText = formattedTime;
-        document.getElementById('date').innerHTML = dayNames[estTime.getDay()] + " " + monthNames[now.getMonth()] + " " + now.getDate();
+        document.getElementById('date').innerHTML = days[0] + " " + monthNames[now.getMonth()] + " " + now.getDate();
     }
     setInterval(updateClock, 1000);
 }

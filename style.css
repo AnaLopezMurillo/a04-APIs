@@ -1,7 +1,12 @@
 body {
     background-attachment: fixed;
-    background-image: linear-gradient(180deg, #1D0E49, #845B29);
+    background-image: linear-gradient(180deg, #1D0E49, #9E6D39);
     z-index:0;
+    /* filter: contrast(1.2) saturate(1.2); */
+}
+
+#main {
+    /* filter: contrast(1.2) saturate(1.2); */
 }
 
 #footer {
@@ -9,17 +14,16 @@ body {
     left: 0;
     right: 0;
     position:fixed;
-    z-index:0;
-    height:40px;
+    z-index:-1;
+    height:10px;
     border-color: beige;
-    border-width: 10px;
+    border-width: 40px;
     background-color: #2D3868;
     padding: 12px;
     text-align: center;
 }
 
 #header {
-    float:right;
     width:100%;
     color:#c9c9f8;
     font-family: Georia, sans-serif;
@@ -42,9 +46,11 @@ body {
 
 #date {
     text-align: right;
+    letter-spacing: 7px;
 }
 
 #weather {
+    margin-top: 2.7rem;
     margin-left: 3rem;
 }
 
@@ -52,9 +58,9 @@ weather-card {
     width: 310px;
     height: 700px;
     float: left;
-    margin-top:0.5rem;
+    margin-top:1rem;
     margin-right:3rem;
-    z-index:1;
+    z-index:3;
     background-attachment: fixed;
     background-image: linear-gradient(180deg, #877EFA,  #0A0187);
     border-radius: 10px;
@@ -90,6 +96,26 @@ img {
     width: 80%;
     /* margin-bottom:1rem; */
     padding-left:2rem;
+}
+
+.banner {
+    position: absolute;
+    z-index:-1;
+    height: 150px;
+    margin-left: -3rem;
+    width: 1250px;
+}
+
+.specs {
+    margin-right: 2rem;
+}
+
+.test {
+    position: absolute;
+    z-index:2;
+    width: 20%;
+    margin-left: 10rem;
+    margin-top: -1rem;
 }
 
 .temp {

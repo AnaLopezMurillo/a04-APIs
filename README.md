@@ -8,7 +8,7 @@ Weather icons are made by logging WMO Weather intepretation codes and layered ba
 All icons and graphics were hand-drawn using Adobe Illustrator.
 
 ## Run Instructions:
-Clone repository and run index.html with live server. Website may take a few seconds to build.
+Clone repository and run index.html with live server. Please note that website may take a few seconds to build.
 
 ## APIs used:
 [Open-Meteo](https://open-meteo.com/)
@@ -17,12 +17,9 @@ Clone repository and run index.html with live server. Website may take a few sec
 - Mean precipitation probability
 - Current temperature
 - Current precipitation probability
-- WMO Weather Code
+- WMO Weather Codes
 
 [7Timer!](https://www.7timer.info/doc.php?lang=en)
 - Wind speed
 - Wind direction
 - Relative Humidity
-
-[Inshorts News Api](https://github.com/cyberboysumanjay/Inshorts-News-API)
-- News titles
