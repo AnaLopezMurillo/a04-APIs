@@ -25,13 +25,13 @@ const timerURL = `http://www.7timer.info/bin/api.pl?${timerSearch}`;
 // Initialize data arrays 
 let days = [];                   // string array
 let tempMax = [];                // Maximum temperature in fahrenheight
-let tempMin = [];               // Minimum temperature in fahrenheight
+let tempMin = [];                // Minimum temperature in fahrenheight
 let tempCurr = 0;                // Current temperature in fahrenheight
 let precipPerc = [];             // Precipitation percentage 
 let weather_code = [];           // in WMO
 let humidityCurr = "";           // Relative humidity %
-let wind_speed = 0;
-let wind_direction = "";
+let wind_speed = 0;              // in m/s
+let wind_direction = "";         // compass direction
 
 
 // constants
@@ -137,6 +137,11 @@ function toFahrenheight(temp) {
     return result.toFixed();
 }
 
+function toMPH(speed) {
+    result = speed*2.23694;
+    return result.toFixed();
+}
+
 function clock() {
     function updateClock() {
         const now = new Date();
@@ -180,6 +185,14 @@ function populateData() {
             </h2>
             <div class='temp'>
                 <h1>${tempCurr}</h1>
+            </div>
+                <div class='info'>
+                <div class='hum'> 
+                    <h1>HUMIDITY: ${humidityCurr}</h1>
+                </div>
+                <div class='wind'>
+                    <h1>WIND: ${toMPH(wind_speed)} M/S ${wind_direction}</h1>
+                </div>
             </div>
             
         </weather-card>

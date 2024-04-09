@@ -145,6 +145,39 @@ img {
     width: 100%;
 }
 
+#current .hum h1 {
+    font-size:35px;
+    opacity: 90%;
+    margin:0;
+    margin-top: 7rem;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align: left;
+    text-shadow: 1px 1px 0px #060303;
+}
+
+#current .wind h1 {
+    font-size:35px;
+    color:#bee5f6e1;
+    margin:0;
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align: left;
+    text-shadow: 1px 1px 0px #060303;
+}
+
+.info {
+    margin-left: 0.5rem;
+}
+
+/* <div class='wind'>
+                <h1><h1>WIND: ${toMPH(wind_speed)} MPH ${wind_direction}</h1></h1>
+            </div> */
+
+#current 
+
 .low {
     color:#847FFF;
 }
