@@ -8,7 +8,9 @@ Weather icons are made by logging WMO Weather intepretation codes and layered ba
 All icons and graphics were hand-drawn using Adobe Illustrator.
 
 ## Run Instructions:
-Clone repository and run index.html with live server. Please note that website may take a few seconds to build.
+You can view the website at [this link](https://analopezmurillo.github.io/a04-APIs/).
+
+To run locally, clone the repository and run index.html with a live server. Please note that website may take a few seconds to build.
 
 ## APIs used:
 [Open-Meteo](https://open-meteo.com/)
