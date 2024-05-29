@@ -3,12 +3,124 @@ body {
     background-image: linear-gradient(180deg, #1D0E49, #9E6D39);
     z-index:0;
     zoom: 90%;
-
-    /* filter: contrast(1.2) saturate(1.2); */
 }
 
-#main {
-    /* filter: contrast(1.2) saturate(1.2); */
+/* Uses an edited version of "Interference" by Chris Rickels: 
+    https://codepen.io/cRckls/pen/DJvZXo
+*/
+.buzz_wrapper span{
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+}
+.buzz_wrapper span:nth-child(1){
+  color:red;
+  margin-left:-2px;
+  -webkit-filter: blur(2px);
+    filter: blur(2px);
+}
+.buzz_wrapper span:nth-child(2){
+  color:green;
+  margin-left:2px;
+  -webkit-filter: blur(2px);
+  filter:blur(2px);
+}
+.buzz_wrapper span:nth-child(3){
+  color:blue;
+  position:20px 0;
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+}
+.buzz_wrapper span:nth-child(4){
+  color:#fff;
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  text-shadow:0 0 50px rgba(255,255,255,0.4);
+}
+.buzz_wrapper span:nth-child(5){
+  color:rgba(255,255,255,0.4);
+  -webkit-filter: blur(15px);
+  filter: blur(15px);
+}
+
+.buzz_wrapper span{
+  -webkit-animation: blur 30ms infinite, jerk 20ms infinite;
+  animation: blur 30ms infinite, jerk 20ms infinite;
+}
+
+@keyframes blur {
+  0%   { -webkit-filter: blur(1px); opacity:0.8;}
+  50% { -webkit-filter: blur(1px); opacity:1; }
+  100%{ -webkit-filter: blur(1px); opacity:0.8; }
+}
+@keyframes jerk {
+  50% { left:5px; }
+  51% { left:0; }
+}
+@keyframes jerkup {
+  50% { top:1px; }
+  51% { top:0; }
+}
+
+.buzz_wrapper span:nth-child(3){
+  -webkit-animation: jerkblue 1s infinite;
+  animation: jerkblue 1s infinite;
+}
+@keyframes jerkblue {
+  0% { left:0; }
+  30% { left:0; }
+  31% { left:10px; }
+  32% { left:0; }
+  98% { left:0; }
+  100% { left:10px; }
+}
+.buzz_wrapper span:nth-child(2){
+  -webkit-animation: jerkgreen 1s infinite;
+  animation:jerkgreen 1s infinite;
+}
+
+@keyframes jerkgreen {
+  0% { left:0; }
+  30% { left:0; }
+  31% { left:-40px; }
+  32% { left:0; }
+  98% { left:0; }
+  100% { left:-10px; }
+}
+
+.buzz_wrapper .whole{
+  -webkit-animation: jerkwhole 7s infinite;
+  animation: jerkwhole 7s infinite;
+}
+@keyframes jerkwhole {
+  30% {  }
+  40% { 
+    opacity:1; 
+    top:0; 
+    left:0;  
+    -webkit-transform:scale(1,1);  
+    -webkit-transform:skew(0,0);
+}
+  41% { 
+    opacity:0.7; 
+    top:0px; 
+    left:-100px; 
+    -webkit-transform:scale(1,1.2); 
+    -webkit-transform:skew(20deg,0);
+}
+  42% { 
+    opacity:0.7; 
+    top:0px; 
+    left:100px; 
+    -webkit-transform:scale(1,1.2);  
+    -webkit-transform:skew(-80deg,0);
+}
+  43% { 
+    opacity:1; 
+    top:0; 
+    left:0;
+     -webkit-transform:scale(1,1);  
+     -webkit-transform:skew(0,0);
+    }
 }
 
 #footer {
@@ -32,7 +144,7 @@ body {
     letter-spacing: 5px;
     font-size:40px;
     font-kerning: 5px;
-    margin-top:1rem;
+    margin-top:-1rem;
     margin-right:2rem;
     margin-bottom:2rem;
 }
@@ -60,7 +172,7 @@ weather-card {
     width: 310px;
     height: 700px;
     float: left;
-    margin-top:1rem;
+    margin-top:2rem;
     margin-right:3rem;
     z-index:3;
     background-attachment: fixed;
@@ -96,7 +208,7 @@ weather-card h2 {
 
 img {
     width: 80%;
-    /* margin-bottom:1rem; */
+    margin-bottom:1rem;
     padding-left:2rem;
 }
 
@@ -112,12 +224,13 @@ img {
     margin-right: 2rem;
 }
 
-.test {
+.header-img {
     position: absolute;
     z-index:2;
     width: 20%;
     margin-left: 10rem;
     margin-top: -1rem;
+    margin-bottom: 2rem;
 }
 
 .temp {
@@ -174,11 +287,6 @@ img {
     margin-left: 0.5rem;
 }
 
-/* <div class='wind'>
-                <h1><h1>WIND: ${toMPH(wind_speed)} MPH ${wind_direction}</h1></h1>
-            </div> */
-
-#current 
 
 .low {
     color:#847FFF;

@@ -6,21 +6,25 @@
         <link rel="stylesheet" href="./style.css">
         <script defer src="app.js"></script>
     </head>
-    <body>
-        <div id="main" > 
-            <div id="header">
-                <img class="test" src="./icons/TarHeelLogo.png"> 
-                <img class="banner" src="./icons/Banner.png">
-                <div class="specs">
-                    <div id="clock">00:00:00</div>
-                    <div id="date"></div>
+    <body class="buzz_wrapper">
+        <div class="whole">
+            <div id="main"> 
+                <span>
+                <div id="header">
+                    <img class="header-img" src="./icons/TarHeelLogo.png"> 
+                    <img class="banner" src="./icons/Banner.png">
+                    <div class="specs">
+                        <div id="clock">00:00:00</div>
+                        <div id="date"></div>
+                    </div>
                 </div>
+                <div id="weather">
+                    <div id="current"></div>
+                    <div id="upcoming"></div>
+                </div>
+                <div id="footer"></div>
+                </span>
             </div>
-            <div id="weather">
-                <div id="current"></div>
-                <div id="upcoming"></div>
-            </div>
-            <div id="footer"></div>
         </div>
     </body>
 </html>
